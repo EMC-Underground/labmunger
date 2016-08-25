@@ -2,9 +2,13 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler import events
 import methods
 import os
+from datetime import datetime
+import time
+
+scheduler = BackgroundScheduler()
 
 if __name__ == '__main__':
-  scheduler.add_job(methods.get_message_from_SQS, 'interval', seconds = 10)
+  scheduler.add_job(methods.get_message_from_SQS, 'interval', seconds = 3)
   scheduler.add_listener(methods.error_listener, events.EVENT_JOB_EXECUTED | events.EVENT_JOB_ERROR)
   scheduler.start()
 
