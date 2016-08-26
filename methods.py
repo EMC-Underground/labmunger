@@ -29,8 +29,8 @@ def get_message_from_SQS():
       if eventType == "AllVMsCount":
         print('Need to count all of the vms')
         vm_count = fetch_vm_count()
-        print("There are {0} vms in the lab".format(vm_count))
-        response = sqs.get_queue_by_name(QueueName='lab_comm_2').send_message(MessageBody="There are {0} vms in the lab.".format(vm_count), MessageAttributes={"AmazonResponse":{"StringValue":eventType,'DataType': 'String'}})
+        print("There are {0} vm's in the lab".format(vm_count))
+        response = sqs.get_queue_by_name(QueueName='lab_comm_2').send_message(MessageBody="There are {0} vms' in the lab.".format(vm_count), MessageAttributes={"AmazonResponse":{"StringValue":eventType,'DataType': 'String'}})
         print(response)
         # Let the queue know that the message is processed
         message.delete()
